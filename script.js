@@ -76,3 +76,22 @@ function validProposal(person1, person2) {
 }
 validProposal(persons[0], persons[1]);
 // console.log(isValidProposal)
+
+officeSleepTimes = [1000, 499, 519, 300];
+let calculatedSleepTime;
+function calculateSleepTime(times) {
+  totalOfficeSleepTime = 0;
+  for (let i = 0; i < officeSleepTimes.length; i++) {
+    totalOfficeSleepTime += officeSleepTimes[i];
+  }
+  let hour = Math.floor(totalOfficeSleepTime / 3600);
+  let min = Math.floor((totalOfficeSleepTime % 3600) / 60);
+  let sec = totalOfficeSleepTime % 60;
+  calculatedSleepTime = {
+    hour: hour,
+    minuite: min,
+    second: sec,
+  };
+}
+calculateSleepTime(officeSleepTimes);
+console.log(calculatedSleepTime)
