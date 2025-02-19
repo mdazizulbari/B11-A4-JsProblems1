@@ -1,6 +1,10 @@
 let price = 1500;
 let productVat;
 function calculateVAT(price) {
+  if (isNaN(price) || price <= 0) {
+    productVat = "Invalid";
+    return;
+  }
   const vat = 7.5 / 100;
   productVat = price * vat;
   return;
@@ -11,6 +15,10 @@ function calculateVAT(price) {
 let contactNumber = "01819234567";
 let isValidContact;
 function validContact(contact) {
+  if (typeof contact !== "string") {
+    isValidContact = "Invalid";
+    return;
+  }
   for (let i = 0; i < contact.length; i++) {
     if (isNaN(contact[i])) {
       isValidContact = false;
@@ -38,6 +46,10 @@ function validContact(contact) {
 let results = [48, 48, 50, 50, 100];
 let willSuccessresult;
 function willSuccess(marks) {
+  if (!Array.isArray(marks)) {
+    willSuccessresult = "Invalid";
+    return;
+  }
   let passed = 0;
   let failed = 0;
   for (let i = 0; i < marks.length; i++) {
@@ -62,6 +74,10 @@ let persons = [
 ];
 let isValidProposal;
 function validProposal(person1, person2) {
+  if (typeof person1 !== "object" || typeof person2 !== "object") {
+    isValidProposal = "Invalid";
+    return;
+  }
   if (person1.gender === person2.gender) {
     isValidProposal = false;
   } else {
@@ -80,6 +96,12 @@ validProposal(persons[0], persons[1]);
 officeSleepTimes = [1000, 499, 519, 300];
 let calculatedSleepTime;
 function calculateSleepTime(times) {
+  for (let i = 0; i < times.length; i++) {
+    if (typeof times[i] !== "number " || isNaN(times[i])) {
+      calculateSleepTime = "Invalid";
+      return;
+    }
+  }
   totalOfficeSleepTime = 0;
   for (let i = 0; i < officeSleepTimes.length; i++) {
     totalOfficeSleepTime += officeSleepTimes[i];
@@ -94,4 +116,4 @@ function calculateSleepTime(times) {
   };
 }
 calculateSleepTime(officeSleepTimes);
-console.log(calculatedSleepTime)
+console.log(calculatedSleepTime);
