@@ -1,13 +1,14 @@
+let price = 1500;
 let productVat;
 function calculateVAT(price) {
   const vat = 7.5 / 100;
   productVat = price * vat;
   return;
 }
-let price = 1500;
-calculateVAT(price);
+// calculateVAT(price);
 // console.log(productVat);
 
+let contactNumber = "01819234567";
 let isValidContact;
 function validContact(contact) {
   for (let i = 0; i < contact.length; i++) {
@@ -31,10 +32,10 @@ function validContact(contact) {
   }
   isValidContact = true;
 }
-let contactNumber = "01819234567";
-validContact(contactNumber);
+// validContact(contactNumber);
 // console.log(isValidContact);
 
+let results = [48, 48, 50, 50, 100];
 let willSuccessresult;
 function willSuccess(marks) {
   let passed = 0;
@@ -47,11 +48,31 @@ function willSuccess(marks) {
   if (passed > failed) {
     willSuccessresult = true;
   } else willSuccessresult = false;
-  
-    // console.log(passed);
-    // console.log(failed);
+
+  // console.log(passed);
+  // console.log(failed);
   return;
 }
-let results = [48, 48, 50, 50, 100];
-willSuccess(results);
+// willSuccess(results);
 // console.log(willSuccessresult);
+
+let persons = [
+  { name: "Rahul", gender: "male", age: 28 },
+  { name: "Joya", gender: "female", age: 21 },
+];
+let isValidProposal;
+function validProposal(person1, person2) {
+  if (person1.gender === person2.gender) {
+    isValidProposal = false;
+  } else {
+    let ageDifference = Math.abs(person1.age - person2.age);
+    if (ageDifference >= 7) {
+      isValidProposal = false;
+    } else {
+      isValidProposal = true;
+    }
+  }
+  return;
+}
+validProposal(persons[0], persons[1]);
+// console.log(isValidProposal)
