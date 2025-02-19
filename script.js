@@ -6,7 +6,7 @@ function calculateVAT(price) {
 }
 let price = 1500;
 calculateVAT(price);
-console.log(productVat);
+// console.log(productVat);
 
 let isValidContact;
 function validContact(contact) {
@@ -35,7 +35,23 @@ let contactNumber = "01819234567";
 validContact(contactNumber);
 // console.log(isValidContact);
 
-let willheSuccess;
-function willSuccess(marks) {}
-let results = [55, 75, 41, 33, 0, 87, 91, 30];
-willSuccess(results)
+let willSuccessresult;
+function willSuccess(marks) {
+  let passed = 0;
+  let failed = 0;
+  for (let i = 0; i < marks.length; i++) {
+    if (marks[i] >= 50) {
+      passed++;
+    } else failed++;
+  }
+  if (passed > failed) {
+    willSuccessresult = true;
+  } else willSuccessresult = false;
+  
+    // console.log(passed);
+    // console.log(failed);
+  return;
+}
+let results = [48, 48, 50, 50, 100];
+willSuccess(results);
+// console.log(willSuccessresult);
