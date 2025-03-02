@@ -1,119 +1,125 @@
-let price = 1500;
-let productVat;
 function calculateVAT(price) {
   if (isNaN(price) || price <= 0) {
-    productVat = "Invalid";
-    return;
+    return "Invalid";
   }
   const vat = 7.5 / 100;
-  productVat = price * vat;
-  return;
+  return price * vat;
 }
-// calculateVAT(price);
-// console.log(productVat);
+// console.log(calculateVAT(1500))
 
-let contactNumber = "01819234567";
-let isValidContact;
 function validContact(contact) {
   if (typeof contact !== "string") {
-    isValidContact = "Invalid";
-    return;
+    return "Invalid";
   }
   for (let i = 0; i < contact.length; i++) {
-    if (isNaN(contact[i])) {
-      isValidContact = false;
-      return;
+    if (contact[i] === " " || isNaN(Number(contact[i]))) {
+      return false;
     }
   }
-  let digits = contact.length;
-  if (digits != 11) {
-    isValidContact = false;
-    return;
+  if (contact.length != 11 || !contact.startsWith("01")) {
+    return false;
   }
-  if (!contact.startsWith("01")) {
-    isValidContact = false;
-    return;
-  }
-  if (contact.includes(" ")) {
-    isValidContact = false;
-    return;
-  }
-  isValidContact = true;
+  return true;
 }
-// validContact(contactNumber);
-// console.log(isValidContact);
+// console.log(validContact("01819234567"));
+// console.log(validContact("0181923 4567"));
+// console.log(validContact("018192345679"));
+// console.log(validContact(["01987654321"]));
+// console.log(validContact("01345678900"));
+// console.log(validContact("02145678900"));
+// console.log(validContact(true));
 
-let results = [48, 48, 50, 50, 100];
-let willSuccessresult;
+
+
 function willSuccess(marks) {
   if (!Array.isArray(marks)) {
-    willSuccessresult = "Invalid";
-    return;
+    return "Invalid";
   }
-  let passed = 0;
-  let failed = 0;
+  let passed = 0,
+    failed = 0;
   for (let i = 0; i < marks.length; i++) {
     if (marks[i] >= 50) {
       passed++;
     } else failed++;
   }
-  if (passed > failed) {
-    willSuccessresult = true;
-  } else willSuccessresult = false;
-
-  // console.log(passed);
-  // console.log(failed);
-  return;
+  return passed > failed;
 }
-// willSuccess(results);
-// console.log(willSuccessresult);
+// console.log(willSuccess([60, 70, 80, 40, 30]));
+// console.log(willSuccess([48, 48, 92, 100]));
+// console.log(willSuccess([48, 48, 50, 50, 100]));
+// console.log(willSuccess([]));
+// console.log(willSuccess([90]));
+// console.log(willSuccess([90, 99, 87, 48, 34, 49]));
+// console.log(willSuccess("100 , 100"));
+// console.log(willSuccess(90));
 
-let persons = [
-  { name: "Rahul", gender: "male", age: 28 },
-  { name: "Joya", gender: "female", age: 21 },
-];
-let isValidProposal;
+
+
 function validProposal(person1, person2) {
   if (typeof person1 !== "object" || typeof person2 !== "object") {
-    isValidProposal = "Invalid";
-    return;
+    return "Invalid";
   }
   if (person1.gender === person2.gender) {
-    isValidProposal = false;
-  } else {
-    let ageDifference = Math.abs(person1.age - person2.age);
-    if (ageDifference >= 7) {
-      isValidProposal = false;
-    } else {
-      isValidProposal = true;
-    }
+    return false;
   }
-  return;
+  let ageDifference = Math.abs(person1.age - person2.age);
+  return ageDifference <= 7;
 }
-validProposal(persons[0], persons[1]);
-// console.log(isValidProposal)
+// console.log(
+//   validProposal(
+//     { name: "Rahul", gender: "male", age: 28 },
+//     { name: "Joya", gender: "female", age: 21 }
+//   )
+// );
+// console.log(
+//   validProposal(
+//     { name: "milon", gender: "male", age: 20 },
+//     { name: "sumi", gender: "female", age: 25 }
+//   )
+// );
+// console.log(
+//   validProposal(
+//     { name: "shuvo", gender: "male", age: 20 },
+//     { name: "joy", gender: "male", age: 25 }
+//   )
+// );
+// console.log(
+//   validProposal(
+//     { name: "toya", gender: "female", age: 20 },
+//     { name: "kader", gender: "male", age: 25 }
+//   )
+// );
+// console.log(
+//   validProposal(
+//     { name: "toya", gender: "female", age: 24 },
+//     { name: "bjoy", gender: "male", age: 32 }
+//   )
+// );
+// console.log(validProposal("Mizan", { name: "mitu", gender: "male", age: 32 }));
+// console.log(validProposal({ name: "mitu", gender: "male", age: 32 }, "Mizan"));
 
-officeSleepTimes = [1000, 499, 519, 300];
-let calculatedSleepTime;
+
+
 function calculateSleepTime(times) {
+  let totalOfficeSleepTime = 0;
   for (let i = 0; i < times.length; i++) {
-    if (typeof times[i] !== "number " || isNaN(times[i])) {
-      calculateSleepTime = "Invalid";
-      return;
+    if (typeof times[i] !== "number" || isNaN(times[i])) {
+      return "Invalid";
     }
-  }
-  totalOfficeSleepTime = 0;
-  for (let i = 0; i < officeSleepTimes.length; i++) {
-    totalOfficeSleepTime += officeSleepTimes[i];
+    totalOfficeSleepTime += times[i];
   }
   let hour = Math.floor(totalOfficeSleepTime / 3600);
   let min = Math.floor((totalOfficeSleepTime % 3600) / 60);
   let sec = totalOfficeSleepTime % 60;
-  calculatedSleepTime = {
+  return {
     hour: hour,
-    minuite: min,
+    minute: min,
     second: sec,
   };
 }
-calculateSleepTime(officeSleepTimes);
-console.log(calculatedSleepTime);
+// console.log(calculateSleepTime([1000, 499, 519, 300]));
+// console.log(calculateSleepTime([1000, 2000, 725]));
+// console.log(calculateSleepTime([100, 3800]));
+// console.log(calculateSleepTime([]));
+// console.log(calculateSleepTime([5600]));
+// console.log(calculateSleepTime([100, 3800, "90"]));
