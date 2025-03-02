@@ -5,7 +5,12 @@ function calculateVAT(price) {
   const vat = 7.5 / 100;
   return price * vat;
 }
-// console.log(calculateVAT(1500))
+// console.log(calculateVAT(1500));
+// console.log(calculateVAT(200));
+// console.log(calculateVAT(999));
+// console.log(calculateVAT(-500));
+// console.log(calculateVAT("101"));
+// console.log(calculateVAT("foo"));
 
 function validContact(contact) {
   if (typeof contact !== "string") {
@@ -29,8 +34,6 @@ function validContact(contact) {
 // console.log(validContact("02145678900"));
 // console.log(validContact(true));
 
-
-
 function willSuccess(marks) {
   if (!Array.isArray(marks)) {
     return "Invalid";
@@ -52,8 +55,6 @@ function willSuccess(marks) {
 // console.log(willSuccess([90, 99, 87, 48, 34, 49]));
 // console.log(willSuccess("100 , 100"));
 // console.log(willSuccess(90));
-
-
 
 function validProposal(person1, person2) {
   if (typeof person1 !== "object" || typeof person2 !== "object") {
@@ -97,8 +98,6 @@ function validProposal(person1, person2) {
 // );
 // console.log(validProposal("Mizan", { name: "mitu", gender: "male", age: 32 }));
 // console.log(validProposal({ name: "mitu", gender: "male", age: 32 }, "Mizan"));
-
-
 
 function calculateSleepTime(times) {
   let totalOfficeSleepTime = 0;
